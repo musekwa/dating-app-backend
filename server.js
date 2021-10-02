@@ -9,8 +9,6 @@ const app = express();
 
 const { PORT, DB_CONNECTION_URL } = process.env;
 
-app.use(cors());
-app.use(express.json())
 
 mongoose.connect(
     DB_CONNECTION_URL,
@@ -19,6 +17,9 @@ mongoose.connect(
         useUnifiedTopology: true,
     }
 )
+
+app.use(cors());
+app.use(express.json());
 
 app.get('/', (req, res)=>{
     res.status(200).send('Hello TheWebDev')
